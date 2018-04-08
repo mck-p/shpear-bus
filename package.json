@@ -1,13 +1,18 @@
 {
   "name": "@shpear/bus",
-  "version": "0.0.0-development.0",
+  "version": "0.0.0-development.1",
   "description": "Message Bus service for @shpear Microservice platform",
   "main": "index.js",
   "author": "Tim Roberts <tim@mck-p.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "message-bus",
+    "microservice-message-bus"
+  ],
   "dependencies": {
-    "rxjs": "^5.5.8",
-    "@shpear/utils": "*"
-  }
+    "@shpear/utils": "*",
+    "rxjs": "^5.5.8"
+  },
+  "repository": "https://github.com/mck-p/shpear-bus.git"
 }
