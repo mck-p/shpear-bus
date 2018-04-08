@@ -1,6 +1,6 @@
 {
   "name": "@shpear/bus",
-  "version": "0.0.0-development.1",
+  "version": "0.0.0-development.2",
   "description": "Message Bus service for @shpear Microservice platform",
   "main": "index.js",
   "author": "Tim Roberts <tim@mck-p.com>",

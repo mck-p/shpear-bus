@@ -59,3 +59,86 @@ bus.start()
 // stop the bus
 bus.stop()
 ```
+
+## Schema
+
+```
+type INTERNAL_BUS_COMMAND =
+    'REGISTER_ACTOR' |
+    'UPDATE_ACTOR_ADDRESS' |
+    'DEREGISTER_ACTOR'
+
+type ActorID = string
+type ActorAddress = string
+
+interface Action {
+  type: string;
+  payload: any;
+}
+
+interface InternalCommandMessage {
+  type: INTERNAL_BUS_COMMAND;
+  payload: {
+    actor_id: ActorID,
+    actor_address?: ActorAddress
+  }
+}
+
+interface ExternalMessage {
+  action: Action;
+  receiver_id: ActorID
+}
+```
+
+## Example Commands
+
+_**Register Actor to be able to receive messages**_
+
+```
+{
+  type: 'REGISTER_ACTOR',
+  payload: {
+    actor_id: '1234',
+    actor_address: 'localhost:5000'
+  }
+}
+```
+
+_**Update Actor's address**_
+
+```
+{
+  type: 'UPDATE_ACTOR_ADDRESS',
+  payload: {
+    actor_id: '1234',
+    actor_address: 'localhost:5000'
+  }
+}
+```
+
+_**Remove Actor from bus**_
+
+```
+{
+  type: 'DEREGISTER_ACTOR',
+  payload: {
+     actor_id: '1234',
+  }
+}
+```
+
+_**Send Actor a message**_
+
+```
+{
+  action: {
+    type: 'Some action that means something to that person',
+    payload: {
+      some: {
+        payload: 'stuff'
+      }
+    }
+  },
+  reciever_id: '1234'
+}
+```
